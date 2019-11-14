@@ -1,7 +1,7 @@
-from tensorflow.keras import Sequential
-from tensorflow.keras.models import load_model
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.optimizers import Adam
+from keras import Sequential
+from keras.models import load_model
+from keras.layers import Dense
+from keras.optimizers import Adam
 
 import numpy as np
 import random
@@ -56,5 +56,7 @@ class Agent:
             target_f = self.model.predict(state)
             target_f[0][action] = target
             self.model.fit(state, target_f, epochs=1, verbose=0)
-            if self.epsilon > self.epsilon_min:
-                self.epsilon *= self.epsilon_decay
+
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
+            
